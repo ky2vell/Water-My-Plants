@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
+import { plants as mockPlants } from './plants'
+
 function App() {
-  return <h1>Hello World!</h1>;
+  const [plants, setPlant] = useState(mockPlants);
+
+  return <h1>{ plants[0] }</h1>;
 }
 
 export default App;
