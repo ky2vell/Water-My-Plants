@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
 import './App.css';
 
-import { dummyData as mockPlants } from './dummyData'
+import { mockUser } from './dummyData'
 
-import PlantContext from "./contexts/plantsContext";
-
-import PlantList from "./components/plantList";
 import UserContext from "./contexts/userContext";
-
 
 
 function App() {
     const [userInfo, setUserInfo] = useState({});
-    const [plants, setPlant] = useState(mockPlants);
 
   return (
       <div>
-          {localStorage.getItem('token') ? <PrivateRoute component={PlantPage}/> : <Route exact path="/" component={Login}/>}
+          <UserContext.Provider value={userInfo}>
+              <Navigation/>
+          </UserContext.Provider>
+
+          {localStorage.getItem('token') ? <PrivateRoute component={PlantPage}/> : <Route exact path="/" component={MarketingPage}/>}
       </div>
   );
 }

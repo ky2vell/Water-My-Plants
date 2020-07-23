@@ -1,18 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 
-import UserContext from "../contexts/userContext";
-import PlantContext from "../contexts/plantsContext";
+import PlantContext from "../../contexts/plantsContext";
 
 import PlantList from "./plantList";
 
+import { mockPlants } from "../../dummyData";
+
 const PlantPage = () => {
+    const [plants, setPlant] = useState(mockPlants);
 
     return (
         <div>
-            <UserContext.Provider value={userInfo}>
-                <Navigation/>
-            </UserContext.Provider>
-
             <PlantContext.Provider value={plants}>
                 <PlantList />
             </PlantContext.Provider>

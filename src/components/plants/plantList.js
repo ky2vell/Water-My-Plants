@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import PlantDetail from "./plantDetail";
-import PlantContext from "../contexts/plantsContext";
+import PlantContext from "../../contexts/plantsContext";
 
 const PlantList = () => {
     const plants = useContext(PlantContext);
