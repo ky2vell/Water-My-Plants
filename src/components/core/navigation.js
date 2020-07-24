@@ -1,12 +1,11 @@
-import React, {useContext} from 'react';
-import UserContext from "../../contexts/userContext";
+import React from 'react';
+import Login from "./login";
 
 const Navigation = () => {
-    const userInfo = useContext(UserContext);
 
     return (
         <div>
-            Navigation...
+            <Login />
         </div>
     );
 };
