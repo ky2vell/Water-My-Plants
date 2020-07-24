@@ -1,40 +1,35 @@
 import axios from 'axios';
-import {axiosWithAuth} from "./axiosAuth";
+import { axiosWithAuth } from './axiosAuth';
 
-const BASE_URL = "https://cors-anywhere.herokuapp.com/https://watermyplants1.herokuapp.com/api/auth/"
+export const loginCall = credentials => {
+  return axios
+    .post('https://watermyplants1.herokuapp.com/api/auth/login', credentials)
+    .then(res => {
+      return res.data;
+    })
+    .catch(err => {
+      return err;
+    });
+};
 
-export const LOGIN = "login/";
-export const PLANTS = "plants/";
+export const fetchPlants = userId => {
+  return axiosWithAuth()
+    .get(`/plants/${userId}`)
+    .then(res => {
+      return res.data;
+    })
+    .catch(err => {
+      return err;
+    });
+};
 
-
-export function call_AUTH(payload) {
-    return axios.post(`${BASE_URL}${LOGIN}`, payload)
-        .then((response) => {
-            return response;
-        })
-        .catch((error) => {
-            return error;
-        });
-}
-
-export function call_post(endpoint, payload) {
-    return axiosWithAuth()
-        .post(`${BASE_URL}${endpoint}`, payload)
-        .then((response) => {
-            return response;
-        })
-        .catch((error) => {
-            return error;
-        });
-}
-
-export function call_get(endpoint) {
-    return axiosWithAuth()
-        .get(`${BASE_URL}${endpoint}`)
-        .then((response) => {
-            return response;
-        })
-        .catch((error) => {
-            return error;
-        });
-}
+export const fetchUsers = () => {
+  return axiosWithAuth()
+    .get('/users')
+    .then(res => {
+      return res.data;
+    })
+    .catch(err => {
+      return err;
+    });
+};

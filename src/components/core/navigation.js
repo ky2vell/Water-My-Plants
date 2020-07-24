@@ -1,13 +1,7 @@
 import React from 'react';
-import Login from "./login";
 
 const Navigation = () => {
-
-    return (
-        <div>
-            <Login />
-        </div>
-    );
+  return <div></div>;
 };
 
 export default Navigation;
