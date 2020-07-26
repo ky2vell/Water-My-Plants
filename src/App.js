@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Components
@@ -10,21 +10,22 @@ import Login from './components/core/Login';
 
 // Context
 import PlantState from './context/plant/PlantState';
+import AuthState from './context/auth/AuthState';
 
 const App = () => {
-  const [userInfo, setUserInfo] = useState([]);
-
   return (
-    <PlantState>
-      <Router>
-        <Navigation />
-        <Switch>
-          <Route path='/plants' component={PlantList} />
-          <Route path='/login' component={Login} />
-          <Route path='/' component={MarketingPage} />
-        </Switch>
-      </Router>
-    </PlantState>
+    <AuthState>
+      <PlantState>
+        <Router>
+          <Navigation />
+          <Switch>
+            <PrivateRoute path='/plants' component={PlantList} />
+            <Route path='/login' component={Login} />
+            <Route path='/' component={MarketingPage} />
+          </Switch>
+        </Router>
+      </PlantState>
+    </AuthState>
   );
 };
 

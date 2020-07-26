@@ -1,16 +1,31 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useForm } from '../../hooks/useForm';
+import { useHistory } from 'react-router-dom';
+
+// Context
+import AuthContext from '../../context/auth/authContext';
 
 const initialValue = {
   username: '',
   password: ''
 };
 
-const Login = () => {
+const Login = props => {
+  const authContext = useContext(AuthContext);
+  const { login, isAuthenticated } = authContext;
   const [values, setValues, handleChanges] = useForm(initialValue);
+
+  const history = useHistory();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      history.push('/plants');
+    }
+  }, [isAuthenticated]);
 
   const handleSubmit = e => {
     e.preventDefault();
+    login(values);
     setValues(initialValue);
   };
 
