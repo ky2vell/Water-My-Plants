@@ -1,27 +1,18 @@
 import React from 'react';
 import { useForm } from '../../hooks/useForm';
-import { loginCall } from '../../api/apiHelpers';
 
 const initialValue = {
   username: '',
   password: ''
 };
 
-function Login(props) {
-  const [values, handleChanges] = useForm(initialValue);
+const Login = () => {
+  const [values, setValues, handleChanges] = useForm(initialValue);
 
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    loginCall(values)
-      .then(data => {
-        window.localStorage.setItem('token', data.token);
-        props.history.push(`/plantpage/${data.id}`);
-      })
-      .catch(err => {
-        console.log(`Login error: ${err}`);
-      });
-  }
+  const handleSubmit = e => {
+    e.preventDefault();
+    setValues(initialValue);
+  };
 
   return (
     <div>
@@ -48,6 +39,6 @@ function Login(props) {
       </form>
     </div>
   );
-}
+};
 
 export default Login;

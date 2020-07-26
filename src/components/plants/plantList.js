@@ -1,26 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import PlantDetail from './plantDetail';
-import { fetchPlants } from '../../api/apiHelpers';
-import { useParams } from 'react-router-dom';
+import React, { useContext } from 'react';
+
+// Context
+import PlantContext from '../../context/plant/plantContext';
+
+// Components
+import PlantDetail from './PlantDetail';
+import PlantForm from './PlantForm';
 
 const PlantList = () => {
-  const [plants, setPlants] = useState([]);
+  const plantContext = useContext(PlantContext);
 
-  const params = useParams();
-
-  useEffect(() => {
-    fetchPlants(params.userId)
-      .then(plants => {
-        setPlants(plants);
-      })
-      .catch(err => {
-        console.log(`Plant fetch error: ${err}`);
-      });
-  }, [params.userId]);
+  const { plants } = plantContext;
 
   if (plants) {
     return (
       <div>
+        <PlantForm />
         {plants.map(plant => {
           return <PlantDetail plant={plant} key={plant.id} />;
         })}

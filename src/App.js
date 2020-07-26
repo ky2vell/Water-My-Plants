@@ -1,29 +1,31 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Navigation from './components/core/navigation';
+// Components
+import Navigation from './components/core/Navigation';
 import PrivateRoute from './components/routes/privateRoute';
-import MarketingPage from './components/marketing/marketingPage';
-import Login from './components/core/login';
+import MarketingPage from './components/marketing/MarketingPage';
+import PlantList from './components/plants/PlantList';
+import Login from './components/core/Login';
 
-import PlantContext from './contexts/plantsContext';
-import PlantList from './components/plants/plantList';
+// Context
+import PlantState from './context/plant/PlantState';
 
-function App() {
+const App = () => {
   const [userInfo, setUserInfo] = useState([]);
 
   return (
-    <PlantContext.Provider value={{ userInfo, setUserInfo }}>
+    <PlantState>
       <Router>
         <Navigation />
         <Switch>
-          <PrivateRoute path='/plantpage/:userId' component={PlantList} />
+          <Route path='/plants' component={PlantList} />
           <Route path='/login' component={Login} />
           <Route path='/' component={MarketingPage} />
         </Switch>
       </Router>
-    </PlantContext.Provider>
+    </PlantState>
   );
-}
+};
 
 export default App;
