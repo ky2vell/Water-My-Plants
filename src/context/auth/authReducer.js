@@ -1,4 +1,4 @@
-import { USER_LOADED, LOGIN, LOGOUT } from '../types';
+import { USER_LOADED, LOGIN, UPDATE_USER, LOGOUT } from '../types';
 import jwt from 'jwt-decode';
 
 export default (state, action) => {
@@ -19,6 +19,13 @@ export default (state, action) => {
         isAuthenticated: true,
         loading: false,
         user: JSON.parse(window.localStorage.getItem('user'))
+      };
+    case UPDATE_USER:
+      console.log(action.payload);
+      return {
+        ...state,
+        isAuthenticated: true,
+        loading: false
       };
     case LOGOUT:
       window.localStorage.removeItem('token');

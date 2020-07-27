@@ -16,6 +16,7 @@ const Navigation = () => {
   return (
     <section>
       {isAuthenticated && <h5>Hello {user.username}!</h5>}
+      {isAuthenticated && <Link to='/user'>Change Info</Link>}
       <nav>
         <ul>
           <li>

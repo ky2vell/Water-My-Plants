@@ -45,6 +45,7 @@ const PlantForm = () => {
     <form onSubmit={handleSubmit}>
       <h2>{current ? 'Edit Plant' : 'Add Plant'}</h2>
       <label>
+        Nickname:
         <input
           name='nickname'
           value={values.nickname}
@@ -54,6 +55,7 @@ const PlantForm = () => {
         />
       </label>
       <label>
+        Species:
         <input
           name='species'
           value={values.species}
@@ -63,6 +65,7 @@ const PlantForm = () => {
         />
       </label>
       <label>
+        H2O Frequency:
         <input
           name='h2oFrequency'
           value={values.h2oFrequency}

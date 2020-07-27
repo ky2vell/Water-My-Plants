@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 import AuthContext from './authContext';
 import authReducer from './authReducer';
 import { axiosWithAuth } from '../../utils/axiosAuth';
-import { USER_LOADED, LOGIN, LOGOUT } from '../types';
+import { USER_LOADED, LOGIN, UPDATE_USER, LOGOUT } from '../types';
 
 const AuthState = props => {
   const initialState = {
@@ -35,6 +35,19 @@ const AuthState = props => {
       .catch(err => console.log(err));
   };
 
+  // Update User
+  const updateUser = (id, formData) => {
+    axiosWithAuth()
+      .put(`/users/${id}`, formData)
+      .then(res => {
+        dispatch({
+          type: UPDATE_USER,
+          payload: res.data
+        });
+      })
+      .catch(err => console.log(err));
+  };
+
   // Logout
   const logout = () => dispatch({ type: LOGOUT });
 
@@ -45,6 +58,7 @@ const AuthState = props => {
         loading: state.loading,
         user: state.user,
         login,
+        updateUser,
         logout,
         loadUser
       }}

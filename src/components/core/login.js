@@ -10,7 +10,7 @@ const initialValue = {
   password: ''
 };
 
-const Login = props => {
+const Login = () => {
   const authContext = useContext(AuthContext);
   const { login, isAuthenticated } = authContext;
   const [values, setValues, handleChanges] = useForm(initialValue);
@@ -33,6 +33,7 @@ const Login = props => {
     <div>
       <form onSubmit={handleSubmit}>
         <label>
+          Username:
           <input
             name='username'
             value={values.username}
@@ -42,6 +43,7 @@ const Login = props => {
           />
         </label>
         <label>
+          Password:
           <input
             name='password'
             value={values.password}
