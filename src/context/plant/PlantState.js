@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import { axiosWithAuth } from '../../api/axiosAuth';
+import { axiosWithAuth } from '../../utils/axiosAuth';
 import PlantContext from './plantContext';
 import plantReducer from './plantReducer';
 import {

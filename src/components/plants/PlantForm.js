@@ -4,8 +4,10 @@ import { useForm } from '../../hooks/useForm';
 // Context
 import PlantContext from '../../context/plant/plantContext';
 
+const user = JSON.parse(window.localStorage.getItem('user'));
+
 const initialValue = {
-  user_id: window.localStorage.getItem('user_id'),
+  user_id: user.userId,
   nickname: '',
   species: '',
   h2oFrequency: ''
@@ -13,9 +15,9 @@ const initialValue = {
 
 const PlantForm = () => {
   const plantContext = useContext(PlantContext);
-  const [values, setValues, handleChanges] = useForm(initialValue);
-
   const { addPlant, current, clearCurrent, updatePlant } = plantContext;
+
+  const [values, setValues, handleChanges] = useForm(initialValue);
 
   useEffect(() => {
     if (current !== null) {

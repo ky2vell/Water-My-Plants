@@ -6,7 +6,7 @@ import AuthContext from '../../context/auth/authContext';
 
 const Navigation = () => {
   const authContext = useContext(AuthContext);
-  const { loadUser, isAuthenticated, logout } = authContext;
+  const { user, loadUser, isAuthenticated, logout } = authContext;
 
   useEffect(() => {
     loadUser();
@@ -14,24 +14,27 @@ const Navigation = () => {
   }, []);
 
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link to='/'>Home</Link>
-        </li>
-        {isAuthenticated ? (
+    <section>
+      {isAuthenticated && <h5>Hello {user.username}!</h5>}
+      <nav>
+        <ul>
           <li>
-            <a href='#!' onClick={logout}>
-              Logout
-            </a>
+            <Link to='/'>Home</Link>
           </li>
-        ) : (
-          <li>
-            <Link to='/login'>Login</Link>
-          </li>
-        )}
-      </ul>
-    </nav>
+          {isAuthenticated ? (
+            <li>
+              <a href='#!' onClick={logout}>
+                Logout
+              </a>
+            </li>
+          ) : (
+            <li>
+              <Link to='/login'>Login</Link>
+            </li>
+          )}
+        </ul>
+      </nav>
+    </section>
   );
 };
 

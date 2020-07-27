@@ -1,15 +1,14 @@
 import React, { useReducer } from 'react';
 import AuthContext from './authContext';
 import authReducer from './authReducer';
-import axios from 'axios';
-import { axiosWithAuth } from '../../api/axiosAuth';
+import { axiosWithAuth } from '../../utils/axiosAuth';
 import { USER_LOADED, LOGIN, LOGOUT } from '../types';
 
 const AuthState = props => {
   const initialState = {
     isAuthenticated: null,
     loading: true,
-    user: null
+    user: JSON.parse(window.localStorage.getItem('user'))
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
@@ -19,15 +18,7 @@ const AuthState = props => {
     const token = window.localStorage.getItem('token');
 
     if (token) {
-      axios
-        .get(`https://watermyplants1.herokuapp.com/api/auth/users`)
-        .then(res =>
-          dispatch({
-            type: USER_LOADED,
-            payload: res.data
-          })
-        )
-        .catch(err => console.log(err));
+      dispatch({ type: USER_LOADED });
     }
   };
 
@@ -35,12 +26,12 @@ const AuthState = props => {
   const login = formData => {
     axiosWithAuth()
       .post('/login', formData)
-      .then(res =>
+      .then(res => {
         dispatch({
           type: LOGIN,
-          payload: res.data
-        })
-      )
+          payload: res.data.token
+        });
+      })
       .catch(err => console.log(err));
   };
 
