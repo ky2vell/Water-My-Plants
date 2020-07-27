@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import axios from 'axios';
+import { axiosWithAuth } from '../../api/axiosAuth';
 import PlantContext from './plantContext';
 import plantReducer from './plantReducer';
 import {
@@ -8,48 +8,60 @@ import {
   DELETE_PLANT,
   UPDATE_PLANT,
   SET_CURRENT,
-  CLEAR_CURRENT,
-  PLANT_ERROR
+  CLEAR_CURRENT
 } from '../types';
 
 const PlantState = props => {
   const initialState = {
-    plants: [
-      {
-        id: 1,
-        nickname: 'shmoo',
-        species: 'pooopy',
-        h2oFrequency: '3 times a day'
-      },
-      {
-        id: 2,
-        nickname: 'shmoo2',
-        species: 'pooopy2',
-        h2oFrequency: '33 times a day'
-      }
-    ],
-    error: null,
-    current: null
+    plants: [],
+    current: null,
+    loading: true
   };
 
   const [state, dispatch] = useReducer(plantReducer, initialState);
 
   // Get Plants
+  const getPlants = id => {
+    axiosWithAuth()
+      .get(`/plants/${id}`)
+      .then(res =>
+        dispatch({
+          type: GET_PLANTS,
+          payload: res.data
+        })
+      )
+      .catch(err => console.log(err));
+  };
 
   // Add Plant
   const addPlant = plant => {
-    plant.id = 99;
-    dispatch({ type: ADD_PLANT, payload: plant });
+    axiosWithAuth()
+      .post('/plants', plant)
+      .then(res =>
+        dispatch({
+          type: ADD_PLANT,
+          payload: res.data
+        })
+      )
+      .catch(err => console.log(err));
   };
 
   // Delete Plant
   const deletePlant = id => {
-    dispatch({ type: DELETE_PLANT, payload: id });
+    axiosWithAuth()
+      .delete(`/plants/${id}`)
+      .then(dispatch({ type: DELETE_PLANT, payload: id }))
+      .catch(err => console.log(err));
   };
 
   // Update Plant
-  const updatePlant = plant => {
-    dispatch({ type: UPDATE_PLANT, payload: plant });
+  const updatePlant = (id, plant) => {
+    axiosWithAuth()
+      .put(`/plants/${id}`, plant)
+      .then(res => {
+        dispatch({ type: UPDATE_PLANT, payload: res.data });
+      })
+      .catch(err => console.log(err));
   };
 
   // Set Current Plant
@@ -67,6 +79,8 @@ const PlantState = props => {
       value={{
         plants: state.plants,
         current: state.current,
+        loading: state.loading,
+        getPlants,
         addPlant,
         deletePlant,
         setCurrent,

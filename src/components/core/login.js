@@ -21,7 +21,7 @@ const Login = props => {
     if (isAuthenticated) {
       history.push('/plants');
     }
-  }, [isAuthenticated]);
+  }, [history, isAuthenticated]);
 
   const handleSubmit = e => {
     e.preventDefault();

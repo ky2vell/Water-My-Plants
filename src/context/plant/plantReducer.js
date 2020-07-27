@@ -4,21 +4,35 @@ import {
   DELETE_PLANT,
   UPDATE_PLANT,
   SET_CURRENT,
-  CLEAR_CURRENT,
-  PLANT_ERROR
+  CLEAR_CURRENT
 } from '../types';
 
 export default (state, action) => {
   switch (action.type) {
+    case GET_PLANTS:
+      return {
+        ...state,
+        plants: action.payload,
+        loading: false
+      };
     case ADD_PLANT:
       return {
         ...state,
-        plants: [...state.plants, action.payload]
+        plants: [action.payload, ...state.plants],
+        loading: false
       };
     case DELETE_PLANT:
       return {
         ...state,
-        plants: state.plants.filter(plant => plant.id !== action.payload)
+        plants: state.plants.filter(plant => plant.id !== action.payload),
+        loading: false
+      };
+    case UPDATE_PLANT:
+      return {
+        ...state,
+        plants: state.plants.map(plant =>
+          plant.id === action.payload.id ? action.payload : plant
+        )
       };
     case SET_CURRENT:
       return {
@@ -29,13 +43,6 @@ export default (state, action) => {
       return {
         ...state,
         current: null
-      };
-    case UPDATE_PLANT:
-      return {
-        ...state,
-        plants: state.plants.map(plant =>
-          plant.id === action.payload.id ? action.payload : plant
-        )
       };
     default:
       return state;

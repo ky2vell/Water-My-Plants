@@ -5,6 +5,7 @@ import { useForm } from '../../hooks/useForm';
 import PlantContext from '../../context/plant/plantContext';
 
 const initialValue = {
+  user_id: window.localStorage.getItem('user_id'),
   nickname: '',
   species: '',
   h2oFrequency: ''
@@ -29,7 +30,7 @@ const PlantForm = () => {
     if (current === null) {
       addPlant(values);
     } else {
-      updatePlant(values);
+      updatePlant(current.id, values);
     }
     clearAll();
   };
