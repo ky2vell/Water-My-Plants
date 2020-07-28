@@ -7,7 +7,7 @@ import AuthContext from '../../context/auth/authContext';
 const user = JSON.parse(window.localStorage.getItem('user'));
 
 const initialValue = {
-  username: user ? user.username : '',
+  username: user.username,
   password: '',
   phoneNumber: ''
 };
