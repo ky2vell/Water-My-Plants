@@ -1,0 +1,40 @@
+.plantform button {
+  background-color: var(--primary-color);
+
+  &:hover {
+    background: var(--primary-color-hover);
+  }
+}
+
+.plant-cards .card {
+  padding: 2rem;
+  border: #ccc 1px solid;
+  margin: 1.5rem 0;
+  border-radius: 3px;
+  background: white;
+
+  h3 {
+    text-align: left;
+  }
+}
+
+.card-buttons {
+  display: flex;
+
+  button {
+    display: inline-block;
+    width: inherit;
+    background-color: #bf5858;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+
+    &:first-child {
+      background-color: #484848;
+      margin-right: 0.7rem;
+    }
+  }
+}
+
+#button-clear {
+  background-color: #484848;
+}

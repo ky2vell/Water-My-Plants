@@ -25,35 +25,33 @@ const UserForm = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h2>Update User Information</h2>
-        <label>
-          New Password:
-          <input
-            name='password'
-            value={values.password}
-            placeholder=' New Password..'
-            type='password'
-            onChange={handleChanges}
-            minLength='2'
-            required
-          />
-        </label>
-        <label>
-          New Phone Number:
-          <input
-            name='phoneNumber'
-            value={values.phoneNumber}
-            placeholder='Phone Number..'
-            type='text'
-            onChange={handleChanges}
-            required
-          />
-        </label>
-        <button type='submit'>Submit</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} className='userform'>
+      <h2>Update User Info</h2>
+      <label>
+        New Password:
+        <input
+          name='password'
+          value={values.password}
+          placeholder=' New Password..'
+          type='password'
+          onChange={handleChanges}
+          minLength='2'
+          required
+        />
+      </label>
+      <label>
+        New Phone Number:
+        <input
+          name='phoneNumber'
+          value={values.phoneNumber}
+          placeholder='Phone Number..'
+          type='text'
+          onChange={handleChanges}
+          required
+        />
+      </label>
+      <button type='submit'>Submit</button>
+    </form>
   );
 };
 

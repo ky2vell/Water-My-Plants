@@ -15,11 +15,11 @@ const PlantDetail = ({ plant }) => {
   };
 
   return (
-    <div>
-      <div>
-        <h2>{species}</h2>
-        <h3>Common Name: {nickname}</h3>
-        <p>Watering Frequency: {h2oFrequency}</p>
+    <div className='card'>
+      <h3>{species}</h3>
+      <p>Common Name: {nickname}</p>
+      <p>Watering Frequency: {h2oFrequency}</p>
+      <div className='card-buttons'>
         <button onClick={() => setCurrent(plant)}>Edit</button>
         <button onClick={onDelete}>Delete</button>
       </div>

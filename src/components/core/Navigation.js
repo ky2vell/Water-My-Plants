@@ -6,7 +6,7 @@ import AuthContext from '../../context/auth/authContext';
 
 const Navigation = () => {
   const authContext = useContext(AuthContext);
-  const { user, loadUser, isAuthenticated, logout } = authContext;
+  const { loadUser, isAuthenticated, logout } = authContext;
 
   useEffect(() => {
     loadUser();
@@ -14,17 +14,32 @@ const Navigation = () => {
   }, []);
 
   return (
-    <section>
-      {isAuthenticated && <h5>Hello {user.username}!</h5>}
-      {isAuthenticated && <Link to='/user'>Change Info</Link>}
+    <header>
+      <div className='sun'>
+        <i className='fas fa-sun'></i>
+      </div>
       <nav>
+        <Link to='/'>Logo Here</Link>
         <ul>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
+          {isAuthenticated && (
+            <>
+              <li>
+                <Link className='plant-icon' to='/plants'>
+                  <i className='fas fa-seedling'></i>My Plants
+                </Link>
+              </li>
+              <li>
+                <Link to='/user'>
+                  <i className='fas fa-cog'></i>
+                  Settings
+                </Link>
+              </li>
+            </>
+          )}
           {isAuthenticated ? (
             <li>
               <a href='#!' onClick={logout}>
+                <i className='fas fa-sign-out-alt'></i>
                 Logout
               </a>
             </li>
@@ -35,7 +50,7 @@ const Navigation = () => {
           )}
         </ul>
       </nav>
-    </section>
+    </header>
   );
 };
 

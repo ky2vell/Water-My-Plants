@@ -21,13 +21,16 @@ const PlantList = () => {
   }, []);
 
   return (
-    <div>
+    <div className='grid-2'>
       <PlantForm />
-      {loading ? (
-        <h2>Plants are loading...</h2>
-      ) : (
-        plants.map(plant => <PlantDetail plant={plant} key={plant.id} />)
-      )}
+      <div className='plant-cards'>
+        <h2>My Plants</h2>
+        {loading ? (
+          <h2>Plants are loading...</h2>
+        ) : (
+          plants.map(plant => <PlantDetail plant={plant} key={plant.id} />)
+        )}
+      </div>
     </div>
   );
 };
