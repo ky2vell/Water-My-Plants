@@ -21,7 +21,6 @@ export default (state, action) => {
         user: JSON.parse(window.localStorage.getItem('user'))
       };
     case UPDATE_USER:
-      console.log(action.payload);
       return {
         ...state,
         isAuthenticated: true,

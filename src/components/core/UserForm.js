@@ -7,7 +7,7 @@ import AuthContext from '../../context/auth/authContext';
 const user = JSON.parse(window.localStorage.getItem('user'));
 
 const initialValue = {
-  username: user.username,
+  username: user ? user.username : '',
   password: '',
   phoneNumber: ''
 };
@@ -34,8 +34,10 @@ const UserForm = () => {
             name='password'
             value={values.password}
             placeholder=' New Password..'
-            type='text'
+            type='password'
             onChange={handleChanges}
+            minLength='2'
+            required
           />
         </label>
         <label>
@@ -46,6 +48,7 @@ const UserForm = () => {
             placeholder='Phone Number..'
             type='text'
             onChange={handleChanges}
+            required
           />
         </label>
         <button type='submit'>Submit</button>

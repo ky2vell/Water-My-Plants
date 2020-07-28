@@ -6,9 +6,9 @@ import { USER_LOADED, LOGIN, UPDATE_USER, LOGOUT } from '../types';
 
 const AuthState = props => {
   const initialState = {
+    user: JSON.parse(window.localStorage.getItem('user')),
     isAuthenticated: null,
-    loading: true,
-    user: JSON.parse(window.localStorage.getItem('user'))
+    loading: true
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
@@ -39,12 +39,7 @@ const AuthState = props => {
   const updateUser = (id, formData) => {
     axiosWithAuth()
       .put(`/users/${id}`, formData)
-      .then(res => {
-        dispatch({
-          type: UPDATE_USER,
-          payload: res.data
-        });
-      })
+      .then(dispatch({ type: UPDATE_USER }))
       .catch(err => console.log(err));
   };
 
