@@ -1,0 +1,10 @@
+export const GET_PLANTS = 'GET_PLANTS';
+export const ADD_PLANT = 'ADD_PLANT';
+export const DELETE_PLANT = 'DELETE_PLANT';
+export const UPDATE_PLANT = 'UPDATE_PLANT';
+export const SET_CURRENT = 'SET_CURRENT';
+export const CLEAR_CURRENT = 'CLEAR_CURRENT';
+export const UPDATE_USER = 'UPDATE_USER';
+export const USER_LOADED = 'USER_LOADED';
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';

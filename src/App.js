@@ -1,33 +1,34 @@
-import React, {useEffect, useState} from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Navigation from "./components/core/navigation";
-import PrivateRoute from "./components/routes/privateRoute";
-import MarketingPage from "./components/marketing/marketingPage";
+// Components
+import Navigation from './components/core/Navigation';
+import PrivateRoute from './components/routes/privateRoute';
+import MarketingPage from './components/marketing/MarketingPage';
+import PlantList from './components/plants/PlantList';
+import Login from './components/core/Login';
+import UserForm from './components/core/UserForm';
 
-import PlantContext from "./contexts/plantsContext";
-import PlantList from "./components/plants/plantList";
+// Context
+import PlantState from './context/plant/PlantState';
+import AuthState from './context/auth/AuthState';
 
-
-function App() {
-    const [userInfo, setUserInfo] = useState([]);
-
-    useEffect(() => {
-        let token = localStorage.getItem('token') ? localStorage.getItem('token') : false;
-
-    }, []);
-
+const App = () => {
   return (
-      <Router>
-          <PlantContext.Provider value={{userInfo, setUserInfo}}>
-          <div>
-              <Navigation/>
-
-              {userInfo.id ? <PrivateRoute component={PlantList}/> : <Route exact path="/" component={MarketingPage}/>}
-          </div>
-          </PlantContext.Provider>
-      </Router>
+    <AuthState>
+      <PlantState>
+        <Router>
+          <Navigation />
+          <Switch>
+            <PrivateRoute path='/user' component={UserForm} />
+            <PrivateRoute path='/plants' component={PlantList} />
+            <Route path='/login' component={Login} />
+            <Route path='/' component={MarketingPage} />
+          </Switch>
+        </Router>
+      </PlantState>
+    </AuthState>
   );
-}
+};
 
 export default App;
