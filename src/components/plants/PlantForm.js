@@ -7,7 +7,7 @@ import PlantContext from '../../context/plant/plantContext';
 const user = JSON.parse(window.localStorage.getItem('user'));
 
 const initialValue = {
-  user_id: user ? user.userId : '',
+  user_id: user.userId,
   nickname: '',
   species: '',
   h2oFrequency: ''

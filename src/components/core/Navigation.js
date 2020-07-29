@@ -18,10 +18,10 @@ const Navigation = () => {
   }, []);
 
   const spinIcon = e => {
+    playaudio();
     e.currentTarget.style = ' ';
     void e.currentTarget.offsetWidth;
     e.currentTarget.style.animation = 'spin 1s';
-    playaudio();
   };
 
   const playaudio = () => {
@@ -48,7 +48,7 @@ const Navigation = () => {
         <audio id='audio' src={switchOn}></audio>
       </label>
       <nav>
-        <Link to='/plants'>
+        <Link to='/'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             viewBox='0 0 124.187 70'
