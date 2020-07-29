@@ -39,6 +39,13 @@
     &:first-child {
       background-color: #0b82ff;
       margin-right: 0.7rem;
+
+      &:hover {
+        background-color: #459cf7;
+      }
+    }
+    &:hover {
+      background-color: #f15e5e;
     }
   }
 }

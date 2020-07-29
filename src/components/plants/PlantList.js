@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 // Context
 import PlantContext from '../../context/plant/plantContext';
@@ -30,7 +31,13 @@ const PlantList = () => {
             <i className='fas fa-seedling'></i>Plants are loading...
           </h2>
         ) : (
-          plants.map(plant => <PlantDetail plant={plant} key={plant.id} />)
+          <TransitionGroup>
+            {plants.map(plant => (
+              <CSSTransition key={plant.id} timeout={500} classNames='item'>
+                <PlantDetail plant={plant} key={plant.id} />
+              </CSSTransition>
+            ))}
+          </TransitionGroup>
         )}
       </div>
     </div>

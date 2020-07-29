@@ -37,6 +37,12 @@ nav {
     padding: 1rem 1.5rem;
     border-radius: 50px;
     color: var(--primary-color);
+
+    &:hover {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: #ffffff;
+    }
   }
 }
 
