@@ -1,8 +1,16 @@
-.plantform button {
-  background-color: var(--primary-color);
+.plantform {
+  button {
+    background-color: var(--primary-color);
 
-  &:hover {
-    background: var(--primary-color-hover);
+    &:hover {
+      background: var(--primary-color-hover);
+    }
+  }
+
+  @include respond(tablet) {
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 3rem;
   }
 }
 
@@ -22,6 +30,10 @@
   i {
     color: var(--primary-color);
     margin-right: 0.3rem;
+  }
+
+  @include respond(tablet) {
+    text-align: center;
   }
 }
 
@@ -47,6 +59,15 @@
     &:hover {
       background-color: #f15e5e;
     }
+
+    @include respond(tablet) {
+      padding: 1rem 3rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  @include respond(tablet) {
+    justify-content: center;
   }
 }
 

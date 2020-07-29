@@ -30,6 +30,10 @@ nav {
     i {
       margin-right: 0.3rem;
     }
+
+    @include respond(nav) {
+      flex-direction: column;
+    }
   }
 
   .plant-icon {
@@ -43,6 +47,10 @@ nav {
       border-color: var(--primary-color);
       color: #ffffff;
     }
+  }
+
+  @include respond(nav) {
+    padding: 1.5rem 2rem 1rem;
   }
 }
 
@@ -70,6 +78,10 @@ label.theme-switch input {
 
   i {
     font-size: 40px;
+  }
+
+  @include respond(mobile) {
+    display: none;
   }
 }
 

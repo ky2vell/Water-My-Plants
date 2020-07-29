@@ -74,35 +74,47 @@ const Navigation = () => {
             </g>
           </svg>
         </Link>
-        <ul>
-          {isAuthenticated && (
-            <>
-              <li>
-                <Link className='plant-icon' to='/plants'>
-                  <i className='fas fa-seedling'></i>My Plants
-                </Link>
-              </li>
-              <li>
-                <Link to='/user'>
-                  <i className='fas fa-cog'></i>
-                  Settings
-                </Link>
-              </li>
-            </>
-          )}
-          {isAuthenticated ? (
-            <li>
-              <a href='#!' onClick={logout}>
-                <i className='fas fa-sign-out-alt'></i>
-                Logout
-              </a>
-            </li>
-          ) : (
-            <li>
-              <Link to='/login'>Login</Link>
-            </li>
-          )}
-        </ul>
+        <div className='menu-wrap'>
+          <input type='checkbox' className='toggler' />
+          <div className='hamburger'>
+            <div></div>
+          </div>
+          <div className='menu'>
+            <div>
+              <div>
+                <ul>
+                  {isAuthenticated && (
+                    <>
+                      <li>
+                        <Link className='plant-icon' to='/plants'>
+                          <i className='fas fa-seedling'></i>My Plants
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to='/user'>
+                          <i className='fas fa-cog'></i>
+                          Settings
+                        </Link>
+                      </li>
+                    </>
+                  )}
+                  {isAuthenticated ? (
+                    <li>
+                      <a href='#!' onClick={logout}>
+                        <i className='fas fa-sign-out-alt'></i>
+                        Logout
+                      </a>
+                    </li>
+                  ) : (
+                    <li>
+                      <Link to='/login'>Login</Link>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </nav>
     </header>
   );
