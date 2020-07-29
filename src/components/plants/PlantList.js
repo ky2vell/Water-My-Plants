@@ -12,8 +12,8 @@ const PlantList = () => {
   const plantContext = useContext(PlantContext);
   const authContext = useContext(AuthContext);
 
-  const { plants, getPlants } = plantContext;
-  const { loading, user } = authContext;
+  const { plants, getPlants, loading } = plantContext;
+  const { user } = authContext;
 
   useEffect(() => {
     getPlants(user.userId);
@@ -26,7 +26,9 @@ const PlantList = () => {
       <div className='plant-cards'>
         <h2>My Plants</h2>
         {loading ? (
-          <h2>Plants are loading...</h2>
+          <h2 className='loading'>
+            <i className='fas fa-seedling'></i>Plants are loading...
+          </h2>
         ) : (
           plants.map(plant => <PlantDetail plant={plant} key={plant.id} />)
         )}
