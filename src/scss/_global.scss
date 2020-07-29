@@ -9,6 +9,7 @@
   --border-color: #ccc;
   --card-color: #ffffff;
   --card-heading-color: #000000;
+  --login-color: #ffffff;
 }
 
 [data-theme='dark'] {
@@ -21,6 +22,7 @@
   --border-color: #0d0d0d;
   --card-color: #232323;
   --card-heading-color: #4e9838;
+  --login-color: #000000;
 }
 
 * {
@@ -49,6 +51,7 @@ main {
 
 a {
   text-decoration: none;
+  line-height: 0;
   color: var(--link-color);
 }
 

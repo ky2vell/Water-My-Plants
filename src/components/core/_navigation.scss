@@ -50,7 +50,7 @@ nav {
   }
 
   @include respond(nav) {
-    padding: 1.5rem 2rem 1rem;
+    padding: 2rem;
   }
 }
 
@@ -87,4 +87,17 @@ label.theme-switch input {
 
 .animate {
   animation: spin 800ms;
+}
+
+.login {
+  border: 2px solid var(--font-color);
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  color: var(--font-color);
+
+  &:hover {
+    background-color: var(--font-color);
+    border-color: var(--font-color);
+    color: var(--login-color);
+  }
 }
