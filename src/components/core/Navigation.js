@@ -1,5 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import switchOn from '../../audio/switch-on.mp3';
+import { useDarkMode } from '../../hooks/useDarkMode';
 
 // Context
 import AuthContext from '../../context/auth/authContext';
@@ -8,16 +10,43 @@ const Navigation = () => {
   const authContext = useContext(AuthContext);
   const { loadUser, isAuthenticated, logout } = authContext;
 
+  const [darkMode, toggleMode] = useDarkMode('DarkMode', false);
+
   useEffect(() => {
     loadUser();
     // eslint-disable-next-line
   }, []);
 
+  const spinIcon = e => {
+    e.currentTarget.style = ' ';
+    void e.currentTarget.offsetWidth;
+    e.currentTarget.style.animation = 'spin 1s';
+    playaudio();
+  };
+
+  const playaudio = () => {
+    const audio = document.getElementById('audio');
+    audio.play();
+  };
+
   return (
     <header>
-      <div className='sun'>
-        <i className='fas fa-sun'></i>
-      </div>
+      <label className='theme-switch' htmlFor='checkbox'>
+        <input
+          type='checkbox'
+          id='checkbox'
+          onChange={toggleMode}
+          checked={darkMode}
+        />
+        <div className='sun' onClick={spinIcon}>
+          {darkMode ? (
+            <i className='fas fa-moon'></i>
+          ) : (
+            <i className='fas fa-sun'></i>
+          )}
+        </div>
+        <audio id='audio' src={switchOn}></audio>
+      </label>
       <nav>
         <Link to='/plants'>
           <svg

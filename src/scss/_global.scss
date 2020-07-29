@@ -1,24 +1,26 @@
 :root {
   --primary-color: #4e9838;
   --primary-color-hover: #73c35b;
-  --secondary-color: #536390;
   --nav-color: #ffffff;
   --main-color: #fafafa;
   --link-color: #4c4c4c;
   --font-color: #000000;
-  --heading-color: #292922;
-  --button-color: #000000;
+  --heading-color: #000000;
+  --border-color: #ccc;
+  --card-color: #ffffff;
+  --card-heading-color: #000000;
 }
 
 [data-theme='dark'] {
-  --primary-color: #97c58a;
-  --secondary-color: #536390;
-  --nav-color: #ffffff;
-  --main-color: #ffffff;
-  --link-color: #000;
-  --font-color: #000000;
-  --heading-color: #292922;
+  --nav-color: #252525;
+  --main-color: #0c0c0c;
+  --link-color: #ffffff;
+  --font-color: #ffffff;
+  --heading-color: #0b82ff;
   --button-color: #000000;
+  --border-color: #0d0d0d;
+  --card-color: #232323;
+  --card-heading-color: #4e9838;
 }
 
 * {
@@ -52,16 +54,18 @@ a {
 
 /* Forms */
 input {
-  border: 1px solid #ccc;
+  background: var(--card-color);
+  color: var(--font-color);
+  border: 1px solid var(--border-color);
   display: block;
   margin-bottom: 0.8em;
   width: 100%;
-  padding: 0.375rem 0.75rem;
+  padding: 0.8rem 0.75rem;
   line-height: 1.5;
   border-radius: 0.25rem;
   font-size: 1.6rem;
   outline: none;
-  margin-top: 0.3rem;
+  margin-top: 0.5rem;
 }
 
 form button {
@@ -87,6 +91,11 @@ h3 {
 
 h2 {
   text-align: center;
+}
+
+h2,
+h3 {
+  color: var(--heading-color);
 }
 
 /* Buttons */

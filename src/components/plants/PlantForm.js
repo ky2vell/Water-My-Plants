@@ -42,7 +42,7 @@ const PlantForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='plantform'>
+    <form onSubmit={handleSubmit} autoComplete='off' className='plantform'>
       <h2>{current ? 'Edit Plant' : 'Add Plant'}</h2>
       <label>
         Nickname:

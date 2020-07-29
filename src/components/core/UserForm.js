@@ -25,7 +25,7 @@ const UserForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='userform'>
+    <form onSubmit={handleSubmit} className='userform' autoComplete='off'>
       <h2>Update User Info</h2>
       <label>
         New Password:
