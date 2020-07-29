@@ -32,7 +32,7 @@ const UserForm = () => {
         <input
           name='password'
           value={values.password}
-          placeholder=' New Password..'
+          placeholder='New Password..'
           type='password'
           onChange={handleChanges}
           minLength='2'

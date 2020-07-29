@@ -4,7 +4,7 @@
   --secondary-color: #536390;
   --nav-color: #ffffff;
   --main-color: #fafafa;
-  --link-color: #0c82ff;
+  --link-color: #4c4c4c;
   --font-color: #000000;
   --heading-color: #292922;
   --button-color: #000000;
@@ -61,6 +61,7 @@ input {
   border-radius: 0.25rem;
   font-size: 1.6rem;
   outline: none;
+  margin-top: 0.3rem;
 }
 
 form button {
@@ -84,8 +85,7 @@ h3 {
   font-weight: bold;
 }
 
-h2,
-h3 {
+h2 {
   text-align: center;
 }
 

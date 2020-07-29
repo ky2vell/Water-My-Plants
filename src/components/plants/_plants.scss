@@ -14,22 +14,29 @@
   background: white;
 
   h3 {
-    text-align: left;
+    margin-bottom: 0.8rem;
+    padding-top: 0.5rem;
+  }
+
+  i {
+    color: var(--primary-color);
+    margin-right: 0.3rem;
   }
 }
 
 .card-buttons {
   display: flex;
+  padding-bottom: 0.8rem;
 
   button {
     display: inline-block;
     width: inherit;
-    background-color: #bf5858;
+    background-color: #ef4747;
     padding: 1rem 3rem;
     font-size: 1.2rem;
 
     &:first-child {
-      background-color: #484848;
+      background-color: #0b82ff;
       margin-right: 0.7rem;
     }
   }
@@ -37,4 +44,5 @@
 
 #button-clear {
   background-color: #484848;
+  margin-top: 1.5rem;
 }
