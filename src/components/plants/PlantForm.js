@@ -42,7 +42,7 @@ const PlantForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} autoComplete='off' className='plantform'>
       <h2>{current ? 'Edit Plant' : 'Add Plant'}</h2>
       <label>
         Nickname:
@@ -77,7 +77,9 @@ const PlantForm = () => {
       <button type='submit'>{current ? 'Update Plant' : 'Add Plant'}</button>
       {current && (
         <div>
-          <button onClick={clearAll}>Clear</button>
+          <button onClick={clearAll} id='button-clear'>
+            Clear
+          </button>
         </div>
       )}
     </form>

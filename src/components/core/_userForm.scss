@@ -1,0 +1,15 @@
+.userform {
+  margin: auto;
+
+  h2 {
+    margin-bottom: 2.5rem;
+  }
+
+  button {
+    background-color: var(--primary-color);
+
+    &:hover {
+      background: var(--primary-color-hover);
+    }
+  }
+}

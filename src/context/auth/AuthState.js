@@ -7,8 +7,7 @@ import { USER_LOADED, LOGIN, UPDATE_USER, LOGOUT } from '../types';
 const AuthState = props => {
   const initialState = {
     user: JSON.parse(window.localStorage.getItem('user')),
-    isAuthenticated: null,
-    loading: true
+    isAuthenticated: null
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);

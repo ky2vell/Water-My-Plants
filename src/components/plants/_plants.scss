@@ -1,0 +1,64 @@
+.plantform button {
+  background-color: var(--primary-color);
+
+  &:hover {
+    background: var(--primary-color-hover);
+  }
+}
+
+.plant-cards .card {
+  padding: 2rem;
+  border: var(--border-color) 1px solid;
+  margin: 1.5rem 0;
+  border-radius: 3px;
+  background: var(--card-color);
+
+  h3 {
+    margin-bottom: 0.8rem;
+    padding-top: 0.5rem;
+    color: var(--card-heading-color);
+  }
+
+  i {
+    color: var(--primary-color);
+    margin-right: 0.3rem;
+  }
+}
+
+.card-buttons {
+  display: flex;
+  padding-bottom: 0.8rem;
+
+  button {
+    display: inline-block;
+    width: inherit;
+    background-color: #ef4747;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+
+    &:first-child {
+      background-color: #0b82ff;
+      margin-right: 0.7rem;
+
+      &:hover {
+        background-color: #459cf7;
+      }
+    }
+    &:hover {
+      background-color: #f15e5e;
+    }
+  }
+}
+
+#button-clear {
+  background-color: #6f6f6f;
+  margin-top: 1.5rem;
+}
+
+.loading {
+  color: var(--primary-color);
+
+  i {
+    margin-right: 0.3rem;
+  }
+}

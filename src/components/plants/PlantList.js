@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 // Context
 import PlantContext from '../../context/plant/plantContext';
@@ -12,8 +13,8 @@ const PlantList = () => {
   const plantContext = useContext(PlantContext);
   const authContext = useContext(AuthContext);
 
-  const { plants, getPlants } = plantContext;
-  const { loading, user } = authContext;
+  const { plants, getPlants, loading } = plantContext;
+  const { user } = authContext;
 
   useEffect(() => {
     getPlants(user.userId);
@@ -21,13 +22,24 @@ const PlantList = () => {
   }, []);
 
   return (
-    <div>
+    <div className='grid-2'>
       <PlantForm />
-      {loading ? (
-        <h2>Plants are loading...</h2>
-      ) : (
-        plants.map(plant => <PlantDetail plant={plant} key={plant.id} />)
-      )}
+      <div className='plant-cards'>
+        <h2>My Plants</h2>
+        {loading ? (
+          <h2 className='loading'>
+            <i className='fas fa-seedling'></i>Plants are loading...
+          </h2>
+        ) : (
+          <TransitionGroup>
+            {plants.map(plant => (
+              <CSSTransition key={plant.id} timeout={500} classNames='item'>
+                <PlantDetail plant={plant} key={plant.id} />
+              </CSSTransition>
+            ))}
+          </TransitionGroup>
+        )}
+      </div>
     </div>
   );
 };

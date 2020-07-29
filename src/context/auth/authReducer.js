@@ -10,28 +10,24 @@ export default (state, action) => {
       return {
         ...state,
         isAuthenticated: true,
-        loading: false,
         user: JSON.parse(window.localStorage.getItem('user'))
       };
     case USER_LOADED:
       return {
         ...state,
         isAuthenticated: true,
-        loading: false,
         user: JSON.parse(window.localStorage.getItem('user'))
       };
     case UPDATE_USER:
       return {
         ...state,
-        isAuthenticated: true,
-        loading: false
+        isAuthenticated: true
       };
     case LOGOUT:
       window.localStorage.removeItem('token');
       window.localStorage.removeItem('user');
       return {
         isAuthenticated: false,
-        loading: false,
         user: null
       };
     default:
