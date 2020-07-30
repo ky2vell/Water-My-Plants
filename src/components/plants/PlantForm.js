@@ -3,19 +3,21 @@ import { useForm } from '../../hooks/useForm';
 
 // Context
 import PlantContext from '../../context/plant/plantContext';
-
-const user = JSON.parse(window.localStorage.getItem('user'));
-
-const initialValue = {
-  user_id: user.userId,
-  nickname: '',
-  species: '',
-  h2oFrequency: ''
-};
+import AuthContext from '../../context/auth/authContext';
 
 const PlantForm = () => {
   const plantContext = useContext(PlantContext);
+  const authContext = useContext(AuthContext);
+
   const { addPlant, current, clearCurrent, updatePlant } = plantContext;
+  const { user } = authContext;
+
+  const initialValue = {
+    user_id: user ? user.userId : '',
+    nickname: '',
+    species: '',
+    h2oFrequency: ''
+  };
 
   const [values, setValues, handleChanges] = useForm(initialValue);
 
@@ -25,6 +27,7 @@ const PlantForm = () => {
     } else {
       setValues(initialValue);
     }
+    // eslint-disable-next-line
   }, [plantContext, current, setValues]);
 
   const handleSubmit = e => {
