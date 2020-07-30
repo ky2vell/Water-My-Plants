@@ -4,17 +4,15 @@ import { useForm } from '../../hooks/useForm';
 // Context
 import AuthContext from '../../context/auth/authContext';
 
-const user = JSON.parse(window.localStorage.getItem('user'));
-
-const initialValue = {
-  username: user ? user.username : '',
-  password: '',
-  phoneNumber: ''
-};
-
 const UserForm = () => {
   const authContext = useContext(AuthContext);
   const { user, updateUser } = authContext;
+
+  const initialValue = {
+    username: user ? user.username : '',
+    password: '',
+    phoneNumber: ''
+  };
 
   const [values, setValues, handleChanges] = useForm(initialValue);
 
@@ -23,6 +21,8 @@ const UserForm = () => {
     updateUser(user.userId, values);
     setValues(initialValue);
   };
+
+  console.log(values);
 
   return (
     <form onSubmit={handleSubmit} className='userform' autoComplete='off'>
