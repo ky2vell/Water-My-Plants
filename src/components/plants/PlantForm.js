@@ -9,7 +9,13 @@ const PlantForm = () => {
   const plantContext = useContext(PlantContext);
   const authContext = useContext(AuthContext);
 
-  const { addPlant, current, clearCurrent, updatePlant } = plantContext;
+  const {
+    addPlant,
+    current,
+    clearCurrent,
+    updatePlant,
+    refresh
+  } = plantContext;
   const { user } = authContext;
 
   const initialValue = {
@@ -77,7 +83,13 @@ const PlantForm = () => {
           onChange={handleChanges}
         />
       </label>
-      <button type='submit'>{current ? 'Update Plant' : 'Add Plant'}</button>
+      <button
+        type='submit'
+        className={`ld-ext-right ${refresh ? 'running' : ''}`}
+      >
+        <span> {current ? 'Update Plant' : 'Add Plant'}</span>
+        <div className='ld ld-ring ld-spin'></div>
+      </button>
       {current && (
         <div>
           <button onClick={clearAll} id='button-clear'>

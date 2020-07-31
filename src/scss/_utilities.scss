@@ -25,3 +25,48 @@
 .text-center {
   text-align: center;
 }
+
+// BUTTON SPINNER
+.ld-ext-right.running {
+  position: relative;
+}
+.ld-ext-right.running span {
+  opacity: 0;
+}
+.ld-ext-right.running > .ld {
+  opacity: 1;
+  z-index: auto;
+  visibility: visible;
+}
+.ld.ld-spin {
+  animation: spin 1s infinite linear;
+}
+
+.ld.ld-ring.ld-spin {
+  color: white;
+}
+.ld-ext-right > .ld {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1em;
+  height: 1em;
+  margin: -0.5em;
+  opacity: 0;
+  z-index: -1;
+  transition: all 0.3s;
+  transition-timing-function: ease-in;
+}
+.ld-ring:after {
+  border-radius: 50%;
+  border: 0.3em solid currentColor;
+  border-left-color: transparent;
+  content: ' ';
+  display: block;
+  width: 2em;
+  height: 2em;
+  box-sizing: border-box;
+  transform-origin: 0 0;
+  transform: translateZ(0) scale(0.5);
+  backface-visibility: hidden;
+}

@@ -8,17 +8,24 @@ import {
   DELETE_PLANT,
   UPDATE_PLANT,
   SET_CURRENT,
-  CLEAR_CURRENT
+  CLEAR_CURRENT,
+  REFRESH
 } from '../types';
 
 const PlantState = props => {
   const initialState = {
     plants: [],
     current: null,
-    loading: true
+    loading: true,
+    refresh: null
   };
 
   const [state, dispatch] = useReducer(plantReducer, initialState);
+
+  // Refresh
+  const refresh = () => {
+    dispatch({ type: REFRESH });
+  };
 
   // Get Plants
   const getPlants = id => {
@@ -35,6 +42,7 @@ const PlantState = props => {
 
   // Add Plant
   const addPlant = plant => {
+    refresh();
     axiosWithAuth()
       .post('/plants', plant)
       .then(res =>
@@ -56,6 +64,7 @@ const PlantState = props => {
 
   // Update Plant
   const updatePlant = (id, plant) => {
+    refresh();
     axiosWithAuth()
       .put(`/plants/${id}`, plant)
       .then(res => {
@@ -80,6 +89,7 @@ const PlantState = props => {
         plants: state.plants,
         current: state.current,
         loading: state.loading,
+        refresh: state.refresh,
         getPlants,
         addPlant,
         deletePlant,

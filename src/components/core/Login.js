@@ -12,7 +12,7 @@ const initialValue = {
 
 const Login = () => {
   const authContext = useContext(AuthContext);
-  const { login, isAuthenticated } = authContext;
+  const { login, isAuthenticated, loading } = authContext;
   const [values, setValues, handleChanges] = useForm(initialValue);
 
   const history = useHistory();
@@ -53,7 +53,13 @@ const Login = () => {
             onChange={handleChanges}
           />
         </label>
-        <button type='submit'>Submit</button>
+        <button
+          type='submit'
+          className={`ld-ext-right ${loading ? 'running' : ''}`}
+        >
+          <span>Submit</span>
+          <div className='ld ld-ring ld-spin'></div>
+        </button>
       </form>
     </div>
   );

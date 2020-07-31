@@ -4,7 +4,8 @@ import {
   DELETE_PLANT,
   UPDATE_PLANT,
   SET_CURRENT,
-  CLEAR_CURRENT
+  CLEAR_CURRENT,
+  REFRESH
 } from '../types';
 
 export default (state, action) => {
@@ -19,7 +20,8 @@ export default (state, action) => {
       return {
         ...state,
         plants: [action.payload, ...state.plants],
-        loading: false
+        loading: false,
+        refresh: false
       };
     case DELETE_PLANT:
       return {
@@ -32,7 +34,8 @@ export default (state, action) => {
         ...state,
         plants: state.plants.map(plant =>
           plant.id === action.payload.id ? action.payload : plant
-        )
+        ),
+        refresh: false
       };
     case SET_CURRENT:
       return {
@@ -43,6 +46,11 @@ export default (state, action) => {
       return {
         ...state,
         current: null
+      };
+    case REFRESH:
+      return {
+        ...state,
+        refresh: true
       };
     default:
       return state;

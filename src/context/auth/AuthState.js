@@ -2,15 +2,21 @@ import React, { useReducer } from 'react';
 import AuthContext from './authContext';
 import authReducer from './authReducer';
 import { axiosWithAuth } from '../../utils/axiosAuth';
-import { USER_LOADED, LOGIN, UPDATE_USER, LOGOUT } from '../types';
+import { USER_LOADED, LOGIN, UPDATE_USER, LOGOUT, LOADING } from '../types';
 
 const AuthState = props => {
   const initialState = {
     user: JSON.parse(window.localStorage.getItem('user')),
-    isAuthenticated: null
+    isAuthenticated: null,
+    loading: false
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
+
+  // Loading
+  const loading = () => {
+    dispatch({ type: LOADING });
+  };
 
   // Load User
   const loadUser = () => {
@@ -23,6 +29,7 @@ const AuthState = props => {
 
   // Login User
   const login = formData => {
+    loading();
     axiosWithAuth()
       .post('/login', formData)
       .then(res => {
