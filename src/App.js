@@ -8,7 +8,7 @@ import AuthState from './context/auth/AuthState';
 // Components
 import Navigation from './components/core/Navigation';
 import PrivateRoute from './components/routes/privateRoute';
-import MarketingPage from './components/marketing/MarketingPage';
+import Home from './components/marketing/Home';
 import PlantList from './components/plants/PlantList';
 import Login from './components/core/Login';
 import UserForm from './components/core/UserForm';
@@ -24,7 +24,7 @@ const App = () => {
               <PrivateRoute path='/user' component={UserForm} />
               <PrivateRoute path='/plants' component={PlantList} />
               <Route path='/login' component={Login} />
-              <Route path='/' component={MarketingPage} />
+              <Route path='/' component={Home} />
             </Switch>
           </main>
         </Router>

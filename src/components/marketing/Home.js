@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MarketingPage = () => {
+const Home = () => {
   return (
     <div style={{ textAlign: 'center', fontSize: '4rem', paddingTop: '5rem' }}>
       <i className='fas fa-tools' style={{ marginRight: '2rem' }}></i>
@@ -9,4 +9,4 @@ const MarketingPage = () => {
   );
 };
 
-export default MarketingPage;
+export default Home;
