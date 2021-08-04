@@ -8,7 +8,7 @@ import {
   REFRESH
 } from '../types';
 
-export default (state, action) => {
+const plantReducer = (state, action) => {
   switch (action.type) {
     case GET_PLANTS:
       return {
@@ -56,3 +56,5 @@ export default (state, action) => {
       return state;
   }
 };
+
+export default plantReducer;
