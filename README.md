@@ -1,2 +1,2 @@
-# React-2
-React 2 for Water My Plants
+# CRUD / Auth React Application
+https://water-the-plants.netlify.app/
